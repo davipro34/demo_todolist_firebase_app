@@ -26,7 +26,6 @@ class InitializeApp extends StatelessWidget {
 
 class ErrorFirebase extends StatelessWidget {
   const ErrorFirebase({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,8 +43,6 @@ class ErrorFirebase extends StatelessWidget {
 
 class Loading extends StatelessWidget {
   const Loading({super.key});
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -60,3 +57,4 @@ class Loading extends StatelessWidget {
     );
   }
 }
+
