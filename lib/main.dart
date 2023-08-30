@@ -59,6 +59,8 @@ class Loading extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
+  final databaseReference = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -85,7 +87,7 @@ class MyApp extends StatelessWidget {
 
   void addDataToFirebase() {
     try {
-      databaseReference.collection("items").add({
+      databaseReference.collection("collectionItems").add({
         "text": "Lire un livre pendant 30 minutes",
       }).then((value) {
         print(value.id);
