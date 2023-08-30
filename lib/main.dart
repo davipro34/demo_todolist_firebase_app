@@ -58,3 +58,40 @@ class Loading extends StatelessWidget {
   }
 }
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Todolist Firebase'),
+          backgroundColor: Colors.blue, 
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              addDataToFirebase();
+            },
+            child: const Text('Ajouter des données'),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void addDataToFirebase() {
+    try {
+      databaseReference.collection("items").add({
+        "text": "Lire un livre pendant 30 minutes",
+      }).then((value) {
+        print(value.id);
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+}
