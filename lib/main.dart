@@ -41,3 +41,22 @@ class ErrorFirebase extends StatelessWidget {
     );
   }
 }
+
+class Loading extends StatelessWidget {
+  const Loading({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: const Center(
+            child: Text('Chargement'),
+          ),
+        ),
+      ),
+    );
+  }
+}
