@@ -118,7 +118,7 @@ class ListSection extends StatelessWidget {
         if (!snapshot.hasData) return const Text('Loading...');
         return ListView(
           children: snapshot.data!.docs.map((document) {
-            return ListTitle(
+            return ListTile(
               title: Text(document['text']),
             );
           }).toList(),  
