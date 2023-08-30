@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -103,7 +105,19 @@ class ListSection extends StatelessWidget {
   final databaseReference = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder();
+    return StreamBuilder(
+      stream: databaseReference.collection('collectionItems').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return const Text('Loading...');
+        return ListView(
+          children: snapshot.data!.docs.map((document) {
+            return ListTitle(
+              title: Text(document['text']),
+            );
+          }).toList(),  
+        );
+      }
+    );
   }
 }
 
