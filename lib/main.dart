@@ -75,13 +75,20 @@ class MyApp extends StatelessWidget {
           title: const Text('Todolist Firebase'),
           backgroundColor: Colors.blue, 
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              addDataToFirebase();
-            },
-            child: const Text('Ajouter des données'),
-          ),
+        body: Column(
+          children: [
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  addDataToFirebase();
+                },
+                child: const Text('Ajouter des données'),
+              ),
+            ),
+            Expanded(
+              child: ListSection(),
+            ),
+          ],
         ),
       ),
     );
