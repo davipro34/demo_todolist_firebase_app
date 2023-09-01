@@ -134,21 +134,21 @@ class FormSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
-      margin: EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 10),
       color: Colors.grey.withOpacity(0.1),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: myController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Entrez une nouvelle tâche',
               ),
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
             width: 45,
             height: 45,
             decoration: BoxDecoration(
@@ -156,7 +156,7 @@ class FormSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
             ),
             child: IconButton(
-              icon: Icon(Icons.add,
+              icon: const Icon(Icons.add,
                 color: Colors.white
                 ),
               onPressed: () {
