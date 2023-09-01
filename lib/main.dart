@@ -126,3 +126,18 @@ class ListSection extends StatelessWidget {
   }
 }
 
+void addItem() {
+  try {
+    var now = new DateTime.now();
+    var hourAndMinutes = new DateFormat('HH:mm');
+    databaseReference.collection("collectionItems").add({
+      "text": myController.text,
+      "time": hourAndMinutes.format(now),
+    }).then((value) {
+      print(value.id);
+      myController.clear();
+    });
+  } catch (e) {
+    print(e.toString());
+  }
+}
