@@ -75,14 +75,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  addDataToFirebase();
-                },
-                child: const Text('Ajouter des données'),
-              ),
-            ),
+            FormSection(),
             Expanded(
               child: ListSection(),
             ),
