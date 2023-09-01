@@ -126,18 +126,62 @@ class ListSection extends StatelessWidget {
   }
 }
 
-void addItem() {
-  try {
-    var now = new DateTime.now();
-    var hourAndMinutes = new DateFormat('HH:mm');
-    databaseReference.collection("collectionItems").add({
-      "text": myController.text,
-      "time": hourAndMinutes.format(now),
-    }).then((value) {
-      print(value.id);
-      myController.clear();
-    });
-  } catch (e) {
-    print(e.toString());
+class FormSection extends StatelessWidget {
+  FormSection({super.key});
+  final databaseReference = FirebaseFirestore.instance;
+  final myController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.only(bottom: 10),
+      color: Colors.grey.withOpacity(0.1),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: myController,
+              decoration: InputDecoration(
+                hintText: 'Entrez une nouvelle tâche',
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            width: 45,
+            height: 45,
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.add,
+                color: Colors.white
+                ),
+              onPressed: () {
+                addItem();
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void addItem() {
+    try {
+      var now = new DateTime.now();
+      var hourAndMinutes = new DateFormat('HH:mm');
+      databaseReference.collection("collectionItems").add({
+        "text": myController.text,
+        "time": hourAndMinutes.format(now),
+      }).then((value) {
+        print(value.id);
+        myController.clear();
+      });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
