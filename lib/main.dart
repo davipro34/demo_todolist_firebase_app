@@ -112,7 +112,7 @@ class ListSection extends StatelessWidget {
             return CheckboxListTile(
               title: Text(
                 document['text'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(document['time']),
               value: document['done'],
@@ -126,14 +126,14 @@ class ListSection extends StatelessWidget {
                   deleteItem(document.id);
                 },
               ),
-              onChanged: (bool? (value) {
+              onChanged: (bool (value) {
                 print(value);
-                updateItem(document.id, value!);
+                updateItem(document.id, value);
               },
             );
           }).toList(),  
         );
-      }
+      },
     );
   }
 
