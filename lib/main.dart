@@ -126,9 +126,9 @@ class ListSection extends StatelessWidget {
                   deleteItem(document.id);
                 },
               ),
-              onChanged: (bool (value) {
+              onChanged: (bool? value) {
                 print(value);
-                updateItem(document.id, value);
+                updateItem(document.id, value!);
               },
             );
           }).toList(),  
