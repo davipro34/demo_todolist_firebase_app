@@ -138,7 +138,14 @@ class ListSection extends StatelessWidget {
   }
 
   void deleteItem(String itemID) {
-    databaseReference.collection('collectionitems').doc(itemID).delete();
+    databaseReference.collection('collectionItems').doc(itemID).delete();
+  }
+
+  void updateItem(String itemID, bool itemDone) {
+    databaseReference
+      .collection("collectionItems")
+      .doc(itemID)
+      .update({"done": itemDone});
   }
 }
 
