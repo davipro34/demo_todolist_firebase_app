@@ -137,6 +137,9 @@ class ListSection extends StatelessWidget {
     );
   }
 
+  void deleteItem(String itemID) {
+    databaseReference.collection('collectionitems').doc(itemID).delete();
+  }
 }
 
 class FormSection extends StatelessWidget {
