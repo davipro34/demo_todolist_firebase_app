@@ -169,6 +169,7 @@ class FormSection extends StatelessWidget {
       databaseReference.collection("collectionItems").add({
         "text": myController.text,
         "time": hourAndMinutes.format(now),
+        "done": false,
       }).then((value) {
         print(value.id);
         myController.clear();
