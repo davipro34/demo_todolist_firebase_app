@@ -109,14 +109,34 @@ class ListSection extends StatelessWidget {
         if (!snapshot.hasData) return const Text('Loading...');
         return ListView(
           children: snapshot.data!.docs.map((document) {
-            return ListTile(
-              title: Text(document['text']),
+            return CheckboxListTile(
+              title: Text(
+                document['text'],
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(document['time']),
+              value: document['done'],
+              activeColor: Colors.amber,
+              secondary: IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red.withOpacity(0.6),
+                ),
+                onPressed: () {
+                  deleteItem(document.id);
+                },
+              ),
+              onChanged: (bool? (value) {
+                print(value);
+                updateItem(document.id, value!);
+              },
             );
           }).toList(),  
         );
       }
     );
   }
+
 }
 
 class FormSection extends StatelessWidget {
@@ -179,3 +199,4 @@ class FormSection extends StatelessWidget {
     }
   }
 }
+
